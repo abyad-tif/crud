@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Data Blogs - SantriKoding.com</title>
+  <link rel="stylesheet" href="../../dist/output.css">
+
+</head>
+
+<body style="background: lightgray">
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-12">
+
+        <% if (messages.success) { %>
+          <div class="alert alert-success" role="alert"><%- messages.success %></div>
+          <% } %>
+
+            <% if (messages.error) { %>
+              <div class="alert alert-danger" role="alert"><%- messages.error %></div>
+              <% } %>
+
+                <div class="container flex flex-col items-center mb-10 mt-10">
+                  <h1 class="font-sans bg-cover text-base text-center">SIMPLE CRUD</h1>
+                  <a href="posts/create"><button
+                      class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded mx-auto">Tambah
+                      Entry</button></a>
+                </div>
+                <div class="flex flex-col">
+                  <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                      <div class="overflow-hidden">
+                        <table class="min-w-full text-center">
+                          <thead class="bg-white border-b">
+                            <tr class="text-base font-bold text-black px-6 py-4 pb-10 pt-10">
+                              <th>No.</th>
+                              <th>Nama</th>
+                              <th>Jurusan</th>
+                              <th>Tahun Lulus</th>
+                              <th>Aksi</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <% if(data.length){ for(var i=0; i< data.length; i++) {%>
+                              <tr>
+                                <th scope="row" class="text-center">
+                                  <%= (i+1) %>
+                                </th>
+                                <td>
+                                  <%= data[i].full_name%>
+                                </td>
+                                <td>
+                                  <%= data[i].jurusan%>
+                                </td>
+                                <td>
+                                  <%= data[i].tahun_lulus%>
+                                </td>
+                                <div class="inline-flex">
+                                  <a href="/posts/edit/<%=data[i].id%>"><button
+                                      class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-l">
+                                      EDIT
+                                    </button></a>
+                                  <a onclick="return alert('Are You sure?')"
+                                    href="/posts/delete/<%=data[i].id%>"><button
+                                      class="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded-r">
+                                      HAPUS
+                                    </button></a>
+                                </div>
+                              </tr>
+                              <% } }else{ %>
+                                <tr>
+                                  <td colspan="4">
+                                    <div class="alert alert-danger" role="alert">
+                                      Data Tidak Ditemukan !
+                                    </div>
+                                  </td>
+                                </tr>
+                                <% } %>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+      </div>
+
+</body>
+
+</html>

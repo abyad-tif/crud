@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Edit Blogs - SantriKoding.com</title>
+  <link rel="stylesheet" href="../../dist/output_create.css">
+</head>
+
+<body style="background: lightgray">
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-12">
+        <% if (messages.error) { %>
+          <div class="alert alert-danger" role="alert"><%- messages.error %></div>
+          <% } %>
+            <div class="card border-0 shadow rounded">
+              <div class="card-body">
+                <form action="/posts/update/<%= id %>" method="post">
+                  <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" class="form-control" name="full_name" value="<%= full_name %>"
+                      placeholder="Masukkan Nama Lengkap">
+                  </div>
+                  <div class="form-group">
+                    <label>Jurusan</label>
+                    <input type="text" class="form-control" name="jurusan" value="<%= jurusan %>"
+                      placeholder="Masukkan Jurusan">
+                  </div>
+                  <div class="form-group">
+                    <label>Tahun Lulus</label>
+                    <input type="text" class="form-control" name="tahun_lulus" value="<%= tahun_lulus %>"
+                      placeholder="Masukkan Tahun lulus">
+                  </div>
+                  <div class="inline-flex">
+                    <button type="submit"
+                      class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-l">
+                      Update
+                    </button>
+                </form>
+              </div>
+            </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  </script>
+</body>
+
+</html>
